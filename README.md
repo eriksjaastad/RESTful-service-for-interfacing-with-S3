@@ -1,19 +1,5 @@
 # RESTful-service-for-interfacing-with-S3
-A large part of back-end programming is interfacing with external API. This assignment is an opportunity to learn backend programming beyond the usual CRUD database operations.
-
-Specifically, your app will have a collection of users, and each user will have a collection of files. However, your api will not accept actual files, nor will it return actual files (HTTP with binary data, while possible, is a little messy for the purposes of this assignment). Instead, you when creating a new file you will post a json representation of a file, such as:
-
-superagent /users/:user/files post ' {"fileName": "fileOne": "content": "hello world!"}
-
-On your backend, you will then create a file named fileOne, with the contents "hello world!".
-
-Next, instead of saving this file to your mongo database, you will save it to your s3 account. Specifically, you will save it to a bucket that has the name as a user, and you will give the file the name specified in the initial post request. You will then store in your mongo database the url to retrieve this file from s3.
-
-When serving a get request for the file. i.e. GET /users/:user/files/:file return a json object that contains the url the the file location on S3.
-
- 
-
-As files are owned by users, I expect you to use nested resources. This resources should be as RESTful as possible. Specifically, your app should contain the following routes and associated operations:
+operations:
 
 GET /users
 
@@ -34,25 +20,3 @@ GET /user/:user/files/:file
 PUT /user/:user/files/:file (replace an already existing file, or update it somehow. I'll leave this up to interpretation)
 
 DELETE /user/:user/files (deletes all files. Deleting all users is rather dangerous, so it was left out intentionally. You can include it if you really want)
-
- 
-
-Feel free to work in groups, but be sure to credit each other. Also...
-
-DO NOT HARDCODE YOUR AMAZON SECURITY TOKENS INTO YOUR APP. IF YOU COMMIT THOSE TO GITHUB BY MISTAKE, BAD THINGS CAN HAPPEN.
-
- 
-
-Rubric
-
-2 Points per route (20 points)
-
-5 Points for using mongoose population
-
-5 Points for testing. (It will be a little tricky to test, as you are testing things that exist outside your program. Do your best!)
-
-Further help:
-
-You'll want to interact with s3 via the node SDK: http://aws.amazon.com/sdk-for-node-js/
-
-Great tutorial on mongoose population http://jaketrent.com/post/mongoose-population/
