@@ -5,7 +5,7 @@
   <title>Document</title>
 </head>
 <body>
-  <input type="file" id="file_input" />
+<input type="file" id="file_input" />
 <p id="status">Please select a file</p>
 <img id="preview" src= "/img/default.png" />
 
@@ -17,18 +17,6 @@
 </form>
 
 <script>
-  (function() {
-    document.getElementById('file_input').onchange = function() {
-      var files = document.getElementById('file_input').files;
-      var file = files[0];
-      if(file == null) {
-        alert('No file selected');
-      } else {
-        get_signed_request(file);
-      }
-    }
-  })();
-
   function get_signed_request(file) {
     var xhr = new XMLHttpRequest();
     hxr.open('GET', '/sign_s?file_name=' + file.name + '&file_type=' + file.type);
@@ -61,6 +49,18 @@
     };
     xhr.send(file);
   }
+
+  (function() {
+    document.getElementById('file_input').onchange = function() {
+      var files = document.getElementById('file_input').files;
+      var file = files[0];
+      if(file == null) {
+        alert('No file selected');
+      } else {
+        get_signed_request(file);
+      }
+    }
+  })();
 </script>
 
 </body>

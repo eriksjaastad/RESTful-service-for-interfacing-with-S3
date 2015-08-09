@@ -5,6 +5,7 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
+var bodyParser = require('body-parser');
 var aws = require('aws-sdk');
 
 /*
@@ -15,6 +16,7 @@ app.set('views', __dirname + '/views');
 app.engine('html', require, require('ejs').renderFile);
 app.set('port', process.env.PORT || 3000);
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.json());
 
 /*
 * load S3 access info
