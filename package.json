@@ -19,8 +19,8 @@
   "dependencies": {
     "aws-sdk": "^2.1.40",
     "body-parser": "^1.13.2",
-    "ejs": "^2.3.3",
-    "express": "^4.13.1"
+    "express": "^4.13.1",
+    "mongoose": "^4.1.1"
   },
   "devDependencies": {
     "chai": "^3.2.0",
