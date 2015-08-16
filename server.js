@@ -1,7 +1,5 @@
 'use strict';
-/*
-* import packages
-*/
+
 var express = require('express');
 var http = require('http');
 var path = require('path');
@@ -11,7 +9,6 @@ var aws = require('aws-sdk');
 * set up Express
 */
 var app = express();
-app.set('views', __dirname + '/views');
 app.engine('html', require, require('ejs').renderFile);
 app.set('port', process.env.PORT || 3000);
 app.use(express.static(path.join(__dirname, 'public')));
@@ -22,14 +19,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
 var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
 var S3_BUCKET = process.env.S3_BUCKET;
-
-/*
-* GET request for /account
-* on request, render account.html located in /views
-*/
-app.get('/account', function(req, res) {
-  res.render('account.html');
-});
 
 /*
 * GET request for /sign_s3
