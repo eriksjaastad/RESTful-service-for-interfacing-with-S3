@@ -1,12 +1,18 @@
 'use strict';
-/*
-* import packages
-*/
+
 var express = require('express');
 var app = express();
 var http = require('http');
 var path = require('path');
 var aws = require('aws-sdk');
+
+/*
+* set up Express
+*/
+var app = express();
+app.engine('html', require, require('ejs').renderFile);
+app.set('port', process.env.PORT || 3000);
+app.use(express.static(path.join(__dirname, 'public')));
 
 /*
 * load S3 access info
@@ -19,6 +25,7 @@ var S3_BUCKET = process.env.S3_BUCKET;
 var port = process.env.PORT || 3000;
 
 /*
+<<<<<<< HEAD
 * setup MongoDB
 */
 var mongoose = require('mongoose');
@@ -29,6 +36,8 @@ mongoose.connect('mongodb://localhost/UserPostDB', function(err) {
 
 /*
 * models
+* GET request for /sign_s3
+* on request, return JSON containing the temporarily-signed S3 request and the url for the image
 */
 var User = require('./app/models/user');
 
