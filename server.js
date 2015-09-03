@@ -25,7 +25,6 @@ var S3_BUCKET = process.env.S3_BUCKET;
 var port = process.env.PORT || 3000;
 
 /*
-<<<<<<< HEAD
 * setup MongoDB
 */
 var mongoose = require('mongoose');
